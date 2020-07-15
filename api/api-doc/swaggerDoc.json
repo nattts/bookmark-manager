@@ -1,0 +1,231 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Bookmark App API",
+    "description": "RESTful APIs for Bookmark Manager app",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "https://bkmrk-api.herokuapp.com",
+  "basePath": "/",
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+      "ApiKeyAuth":{
+        "type": "apiKey",
+        "in": "headers",
+        "name": "authorization"
+      }
+  },
+  "paths": {
+    "/categories": {
+      "get": {
+        "summary": "list all current categories",
+        "description": "get list of all current categories saved by user",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ArrayOfStrings"
+            }
+          },
+          "404":{
+            "description": "not found"
+          }
+        }
+      },
+      "post": {
+        "summary": "create new category",
+        "description": "create new category",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "body",
+            "description": "new category",
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "new category created"
+          },
+          "202":{
+            "description": "category already exist"
+          }
+        }
+      }
+    },
+    "/categories/{current}/{new_category}": {
+      "put": {
+        "summary": "rename category",
+        "description": "rename category",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "current",
+            "in": "path",
+            "description": "rename category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "new_category",
+            "in": "path",
+            "description": "rename category",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successfully renamed category"
+          },
+          "201": {
+            "description": "new category should be different" 
+          },
+          "202": {
+            "description": "could not rename a category"
+          }
+        }
+      }
+    },
+    "/categories/{category}": {
+      "delete": {
+        "summary": "delete category",
+        "description": "delete category",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "path",
+            "description": "delete category",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/links/{category}": {
+      "get": {
+        "summary": "get links by category",
+        "description": "display links by category",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "path",
+            "description": "get links by category",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type" : "array",
+              "items": {
+                "$ref": "#/definitions/ListOfLinks"
+              }
+            }
+          },
+          "404": {
+            "description": "not found" 
+          }
+        }
+      }
+    },
+    "/links": {
+      "post": {
+        "summary": "save a link",
+        "description": "save a link into a category",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "category, url",
+            "in": "body",
+            "description": "set category name where url should be saved",
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "bookmark saved"
+          },
+          "202": {
+            "description": "bookmark already exist" 
+          },
+          "500": {
+            "description": "request can not be fulfilled at the moment"
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete a link",
+        "description": "delete a link by category",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "category, url",
+            "in": "body",
+            "description": "set category name from which url should be deleted",
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "bookmark deleted"
+          },
+          "500": {
+            "description": "request can not be fulfilled at the moment"
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "ArrayOfStrings": {
+      "type" : "array",
+      "items": {
+        "type": "string"
+      },
+      "example": ["foo","bar","baz"]
+    },
+    "ListOfLinks": {
+      "type" : "object",
+      "properties": {
+        "type": "array",
+        "categoryName": {
+          "type": "string",
+          "example": ["http://foo.com","http://bar.com","http://baz.com"]
+        }
+      }
+    },
+    "category": {
+      "type": "object",
+      "properties": {
+          "category": {
+            "type": "string",
+            "example": "music"
+          },
+          "url": {
+            "type": "string",
+            "example": "http://example.com"
+          }
+      }
+    }
+  }
+}

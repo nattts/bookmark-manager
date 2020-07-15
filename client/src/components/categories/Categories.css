@@ -1,0 +1,25 @@
+
+.radio-categories {
+  margin: 10px;
+}
+
+.btn-categories {
+  flex-grow: 1;
+}
+
+.inval-feedback {
+	display: block;
+	width: 100%;
+	height: 30px;
+  color: black;
+  text-align: center;
+}
+
+.edit-wrapper {
+  margin-top: -25px;
+  margin-bottom: 56px;
+}
+
+.delete-btn {
+	margin-left: 10px;
+}
