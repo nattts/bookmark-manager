@@ -22,13 +22,17 @@ Requirements:
 Make sure you've installed [Docker](https://www.docker.com/) and [Docker Compose]([https://docs.docker.com/compose/)]
 
 1. git clone `git@github.com:nattts/bookmark-manager.git`.
-1. `cd` into main directory and run `docker-compose up`. 
+
+2. make sure Docker is running on your local machine.
+
+3. `cd` into main directory and run `docker-compose up`. 
 
 Might take a little while to install all necessary dependencies.
 
-2. in the browser open http://127.0.0.1:3000
+4. in the browser open http://127.0.0.1:3000
 
 API documentation is available at http://127.0.0.1:5000/api-docs
+
 
 
 
