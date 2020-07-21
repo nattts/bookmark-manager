@@ -1,0 +1,46 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "modules": true
+      }
+    },
+    "plugins": ["react"],
+    "extends": "eslint:recommended",
+    "env": {
+      "browser": true,
+      "commonjs": true,
+      "node": true,
+      "es6": true
+    },
+    "rules": {
+      "semi": ["error", "always"],
+      "indent": ["error", "tab", { "SwitchCase": 1 }],
+      "no-tabs": "off",
+      "no-var": "error",
+      "no-unused-vars": ["warn", { "varsIgnorePattern": "^h$", "ignoreRestSiblings": true }],
+      "no-console": ["warn", { "allow": ["warn", "error"] }],
+      "no-alert": "error",
+      "no-multi-spaces": "off",
+      "no-case-declarations": "off",
+      "no-extra-boolean-cast": "off",
+      "no-empty": ["error", { "allowEmptyCatch": true }],
+      "keyword-spacing": ["off", { "before": true, "after": true }],
+      "space-infix-ops": "off",
+      "quotes": ["off", "single", { "avoidEscape": true }],
+      "arrow-spacing": ["off", { "before": true, "after": true }],
+      "object-curly-spacing": ["off", "always"],
+      "array-bracket-spacing": ["off", "never"],
+      "prefer-const": "off",
+      "one-var": ["off", "never"],
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "react/jsx-uses-vars": ["error"],
+      "import/no-unresolved": [0],
+      "import/extensions": [0],
+      "import/no-extraneous-dependencies": [0],
+      "react/react-in-jsx-scope": [0],
+      "react/prop-types": [0]
+    }
+  }

@@ -1,0 +1,24 @@
+
+.links-wrapper {
+  width: 60%;
+  overflow: auto;
+  margin-top: 60px;
+}
+
+.link-wrapper {
+    display: flex;
+    margin-right: 15px;
+}
+
+.btn-links {
+  flex-grow: 1;
+  border-style: hidden;
+  display: flex;
+  overflow-x: auto;
+  flex-direction: column;
+}
+
+.btn-links-h {
+  font-size: large;
+  white-space: nowrap;
+}

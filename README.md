@@ -35,7 +35,6 @@ API documentation is available at http://127.0.0.1:5000/api-docs
 
 
 
-
 ### Run some tests
 
 `npm test`
